@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="example.mapper.TUserMapper">
+  <resultMap id="BaseResultMap" type="example.model.TUser">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="rick_name" jdbcType="VARCHAR" property="rickName" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="example.model.TUser">
+    insert into t_user (id, user_name, rick_name, 
+      sex)
+    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{rickName,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="example.model.TUser">
+    update t_user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      rick_name = #{rickName,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, user_name, rick_name, sex
+    from t_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, user_name, rick_name, sex
+    from t_user
+  </select>
+</mapper>
