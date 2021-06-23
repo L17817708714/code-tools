@@ -1,16 +1,17 @@
 package example.mapper;
 
 import example.model.TUser;
-import java.util.List;
 
 public interface TUserMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(TUser record);
 
+    int insertSelective(TUser record);
+
     TUser selectByPrimaryKey(Integer id);
 
-    List<TUser> selectAll();
+    int updateByPrimaryKeySelective(TUser record);
 
     int updateByPrimaryKey(TUser record);
 }
