@@ -1,13 +1,5 @@
 package com.utils;
 
-import com.sun.deploy.util.StringUtils;
-
-import java.time.Instant;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
 /**
  * @author Administrator
  * @className: SnowFlake
@@ -64,12 +56,12 @@ public class SnowFlake {
      * @author Administrator
      * @date 2021/7/22 20:00
      */
-    public SnowFlake(int dataCenterId, int machineId) throws IllegalAccessException {
+    public SnowFlake(int dataCenterId, int machineId) {
         if (dataCenterId < 0 || dataCenterId > MAX_DATA_CENTER_NUM) {
-            throw new IllegalAccessException("数据中心标识不能小于0或不能大于" + MAX_DATA_CENTER_NUM);
+            throw new IllegalArgumentException("数据中心标识不能小于0或不能大于" + MAX_DATA_CENTER_NUM);
         }
         if (machineId < 0 || machineId > MAX_MACHINE_NUM) {
-            throw new IllegalAccessException("机器码标识不能小于0或不能大于" + MAX_MACHINE_NUM);
+            throw new IllegalArgumentException("机器码标识不能小于0或不能大于" + MAX_MACHINE_NUM);
         }
 
         this.dataCenterId = dataCenterId;
